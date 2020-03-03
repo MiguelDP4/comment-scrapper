@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 load 'lib/input_validator.rb'
-load 'lib/scrap_logic.rb'
+load 'lib/scrap_reader.rb'
 
 def print_categories
   puts '[1] Development'
