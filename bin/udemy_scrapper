@@ -3,34 +3,67 @@ load 'lib/input_validator.rb'
 load 'lib/scrap_logic.rb'
 
 def print_categories
-  puts "[1] Development"
-  puts "[2] Business"
-  puts "[3] Finance & Accounting"
-  puts "[4] IT & Software"
-  puts "[5] Office Productivity"
-  puts "[6] Personal Development"
-  puts "[7] Design"
-  puts "[8] Marketing"
-  puts "[9] Lifestyle"
-  puts "[10] Photography"
-  puts "[11] Health & Fitness"
-  puts "[12] Music"
-  puts "[13] Teaching & Academics"
+  puts '[1] Development'
+  puts '[2] Business'
+  puts '[3] Finance & Accounting'
+  puts '[4] IT & Software'
+  puts '[5] Office Productivity'
+  puts '[6] Personal Development'
+  puts '[7] Design'
+  puts '[8] Marketing'
+  puts '[9] Lifestyle'
+  puts '[10] Photography'
+  puts '[11] Health & Fitness'
+  puts '[12] Music'
+  puts '[13] Teaching & Academics'
 end
 
 def choose_category
   user_input = gets.chomp.to_i
   valid_user_input = @validator.validate_input_is_number(user_input, 1, 13)
-  
+
   while valid_user_input == false
-    puts "Please select only numbers from 1 to 13"
+    puts 'Please select only numbers from 1 to 13'
     user_input = gets.chomp.to_i
     valid_user_input = @validator.validate_input_is_number(user_input, 1, 13)
   end
+  user_input
 end
 
 @validator = Validate.new
 
-puts "Welcome to the udemy.org scrapper. Select the category you want to browse by typing the category number and pressing enter:"
+puts 'Welcome to the udemy.org scrapper.'
+puts 'Select the category you want to browse by typing the category number and pressing enter:'
 print_categories
-choose_category
+category = choose_category
+case category
+when 1
+
+when 2
+
+when 3
+
+when 4
+
+when 5
+
+when 6
+
+when 7
+
+when 8
+
+when 9
+
+when 10
+
+when 11
+
+when 12
+
+when 13
+
+else
+  'You did something wrong, choose a category again'
+  # make a flag to go back
+end
