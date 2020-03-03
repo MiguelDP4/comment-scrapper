@@ -1,8 +1,8 @@
 class Course
-  def initialize(name, lectures, hours, price, previous_price)
+  attr_accessor :name, :author, :price, :previous_price
+  def initialize(name, author, price, previous_price)
     @name = name
-    @lectures = lectures
-    @hours = hours
+    @author = author
     @price = price
     @previous_price = previous_price
   end
