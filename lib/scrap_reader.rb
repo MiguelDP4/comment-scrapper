@@ -17,7 +17,7 @@ class PageReader
     browser = Watir::Browser.new
     browser.goto(@page)
     browser.element(css: '.ud-component--logged-out-home--onboarding').wait_until(&:present?)
-    sleep 1
+    sleep 2
     2.times { browser.send_keys :space }
     sleep 0.75
     browser.buttons(css: '.carousel-arrow')[1].click
