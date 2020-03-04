@@ -16,7 +16,18 @@ class PageReader
     Watir.default_timeout = 120
     browser = Watir::Browser.new
     browser.goto(@page)
-    loaded_site = browser.element(css: ".ud-component--logged-out-home--onboarding").wait_until(&:present?)
+    browser.element(css: ".ud-component--logged-out-home--onboarding").wait_until(&:present?)
+    sleep 1
+    2.times do browser.send_keys :space end
+    puts "Finding the button to view more courses"
+    arrow_number = 1
+    browser.buttons(css: ".carousel-arrow")[1].click
+    sleep 1
+    10.times do
+      browser.buttons(css: ".carousel-arrow")[2].click
+      sleep 2
+    end
+    puts "Clicked the button to view more courses"
     loaded_html = Nokogiri::HTML(browser.html)
     filtered_html = loaded_html.css('.course-discovery-unit--course-discovery-unit-container--3MFr9')[1]
     slides_html = filtered_html.css('.slick-slide')
