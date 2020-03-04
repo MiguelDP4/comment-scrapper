@@ -5,7 +5,7 @@ reader = PageReader.new('https://www.udemy.com/')
 courses = reader.search_all_courses
 i = 1
 courses.each do |course|
-  puts '==========================='
+  puts '==========================='.magenta
   puts 'Course number: '.green + i.to_s
   puts 'Course name: '.green + course.name.to_s
   puts 'Course author: '.green + course.author.to_s
