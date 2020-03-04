@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
-load 'lib/input_validator.rb'
-load 'lib/scrap_reader.rb'
+load '../lib/input_validator.rb'
+load '../lib/scrap_reader.rb'
 require 'colorize'
 
 def print_methods
