@@ -1,7 +1,9 @@
 # Course Scrapper
 
 This is the capstone project for the end of the ruby course in microverse.
-This is a bot which reads the home page of udemy.com and gets the most viewed courses and then presents them to the user. 
+This is a bot which reads the home page of https://www.udemy.com/ and gets the most viewed courses and then presents them to the user. 
+
+You can se a demonstration of the scrapper in [this video](https://youtu.be/Pt3eEv4CidE)
 
 ## Built With
 
