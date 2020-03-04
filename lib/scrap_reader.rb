@@ -5,11 +5,8 @@ load 'lib/course_class.rb'
 
 class PageReader
   @courses = []
-  def initialize(page, keyword = '', min_price = nil, max_price = nil)
+  def initialize(page)
     @page = page
-    @keyword = keyword
-    @min_price = min_price
-    @max_price = max_price
   end
 
   def search_all_courses
@@ -39,7 +36,7 @@ class PageReader
       price = slide.css('.course-price-text').css('span span').text
       previous_price = slide.css('.original-price-container').css('div span s span').text
       tmp_course = Course.new(name, author, price, previous_price)
-      course_array.push(tmp_course) unless price == "" || previous_price == ""
+      course_array.push(tmp_course) unless price == '' || previous_price == ''
     end
     course_array
   end
