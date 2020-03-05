@@ -1,7 +1,7 @@
 require 'nokogiri'
 require 'watir'
 require 'open-uri'
-load '../lib/course_class.rb'
+require_relative 'course_class.rb'
 
 class PageReader
   @courses = []

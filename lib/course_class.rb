@@ -1,5 +1,5 @@
 class Course
-  attr_accessor :name, :author, :price, :previous_price
+  attr_reader :name, :author, :price, :previous_price
   def initialize(name, author, price, previous_price)
     @name = name
     @author = author
