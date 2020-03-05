@@ -35,6 +35,20 @@ def print_courses(courses)
   end
 end
 
+def search_again
+  puts 'Do you want to search again? [y/n]'
+  input = gets.chomp
+  valid = @validator.validate_yes_no(input)
+  until valid
+    puts 'Please only input yes, no, y or n'.red
+    input = gets.chomp
+    valid = @validator.validate_yes_no(input)
+  end
+  return true if input.downcase == 'y' || input.downcase == 'yes'
+
+  false
+end
+
 @validator = Validate.new
 scrapper = PageReader.new('https://www.udemy.com/')
 repeat = true
@@ -50,6 +64,7 @@ while repeat
     key = gets.chomp
     course_array = scrapper.search_by_name(key)
     print_courses(course_array)
+    repeat = search_again
   when 2
     puts 'Write the minimum price you want to search'
     min_price = user_input_number(0, 99_999)
@@ -57,6 +72,7 @@ while repeat
     max_price = user_input_number(0, 99_999)
     course_array = scrapper.search_by_price(min_price, max_price)
     print_courses(course_array)
+    repeat = search_again
   when 3
     puts 'Write a key word to search for a course'
     key = gets.chomp
@@ -66,14 +82,16 @@ while repeat
     max_price = user_input_number(0, 99_999)
     course_array = scrapper.search_by_all_parameters(key, min_price, max_price)
     print_courses(course_array)
+    repeat = search_again
   when 4
     puts 'Showing all courses'
-    course_array = scrapper.search_all_courses
+    course_array = scrapper.search_by_name('')
     print_courses(course_array)
+    repeat = search_again
   when 5
     puts 'Ok, closing'
   else
-    puts 'You did something wrong, choose an option again'
-    repeat = true
+    puts 'You did something wrong, choose an option again'.red
+    repeat = search_again
   end
 end

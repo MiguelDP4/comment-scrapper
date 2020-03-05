@@ -36,7 +36,7 @@ class PageReader
   end
 
   private
-  
+
   def search_all_courses
     Watir.default_timeout = 120
     browser = Watir::Browser.new
@@ -66,5 +66,4 @@ class PageReader
     end
     course_array
   end
-
 end

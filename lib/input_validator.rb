@@ -6,4 +6,12 @@ class Validate
       false
     end
   end
+
+  def validate_yes_no(input)
+    unless input.downcase == 'y' || input.downcase == 'n' || input.downcase == 'yes' || input.downcase == 'no'
+      return false
+    end
+    
+    true
+  end
 end
