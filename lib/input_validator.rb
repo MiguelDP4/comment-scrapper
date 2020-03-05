@@ -11,7 +11,7 @@ class Validate
     unless input.downcase == 'y' || input.downcase == 'n' || input.downcase == 'yes' || input.downcase == 'no'
       return false
     end
-    
+
     true
   end
 end

@@ -4,31 +4,31 @@ require 'open-uri'
 require_relative 'course_class.rb'
 
 class PageReader
-  @@courses = []
+  @courses = []
   def initialize(page)
     @page = page
   end
 
   def search_by_name(key)
-    @@courses = search_all_courses
+    @courses = search_all_courses
     if key == ''
-      @@courses
+      @courses
     else
-      @@courses.select { |course| course.name.downcase.include? key.downcase }
+      @courses.select { |course| course.name.downcase.include? key.downcase }
     end
   end
 
   def search_by_price(min, max)
-    @@courses = search_all_courses
-    @@courses.select do |course|
+    @courses = search_all_courses
+    @courses.select do |course|
       course_price = course.price[1..course.price.length - 1].to_f
       course_price >= min && course_price <= max
     end
   end
 
   def search_by_all_parameters(name, min, max)
-    @@courses = search_all_courses
-    @@courses.select do |course|
+    @courses = search_all_courses
+    @courses.select do |course|
       course_name = course.name.downcase
       course_price = course.price[1..course.price.length - 1].to_f
       course_name.include?(name.downcase) && course_price <= max && course_price >= min
