@@ -18,7 +18,7 @@ You can se a demonstration of the scrapper in [this video](https://youtu.be/Pt3e
 The project was created to be able to import the libraries to any other project and run it there. A test file called udemy_scrapper was created to show the capabilities of the reader.
 
 To use the test program, follow these instructions:
-- Make sure you have ChromeDriver installed in your machine, this allows the program to open a window and search for the information you want from the website. To do that, run the following command on your terminal:
+- Make sure you have ChromeDriver installed in your machine, this allows the program to open a window and search for the information you want from the website. To do that, first make sure google chrome is installed on your computer and then run the following command on your terminal:
 - ```sudo apt-get install chromium-chromedriver```
 - Download the contents of the repository
 - Open the terminal, make sure to change directory to the bin folder in the project
