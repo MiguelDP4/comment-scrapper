@@ -8,6 +8,7 @@ class Validate
   end
 
   def validate_yes_no(input)
+    return false unless input.is_a?(String)
     unless input.downcase == 'y' || input.downcase == 'n' || input.downcase == 'yes' || input.downcase == 'no'
       return false
     end
