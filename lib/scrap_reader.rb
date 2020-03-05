@@ -93,7 +93,7 @@ class PageReader
     author = slide.css('.course-card--instructor-list--lIA4f').text
     price = slide.css('.course-card--discount-price--3TaBk').css('span span').text
     previous_price = slide.css('.price-text--original-price--2e-F5').css('div span s span').text
-    tmp_course = Course.new(name, author, price, previous_price)
+    Course.new(name, author, price, previous_price)
   end
 
   def save_course_instance_type_two(slide)
@@ -101,6 +101,6 @@ class PageReader
     author = slide.css('.merchandising-course-card--instructor-titles--vXVfV').text
     price = slide.css('.course-price-text').css('span span').text
     previous_price = slide.css('.original-price-container').css('div span s span').text
-    tmp_course = Course.new(name, author, price, previous_price)
+    Course.new(name, author, price, previous_price)
   end
 end

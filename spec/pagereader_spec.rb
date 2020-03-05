@@ -49,6 +49,5 @@ describe PageReader do
       expect(reader.search_by_all_parameters('redux', 0, 15)).not_to be_a(String)
     end
   end
-
   
 end

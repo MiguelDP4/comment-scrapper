@@ -1,7 +1,6 @@
 require './lib/input_validator.rb'
 
 describe Validate do
-
   let(:validator) { Validate.new }
 
   describe '#validate_input_is_number' do
