@@ -1,0 +1,97 @@
+#!/usr/bin/env ruby
+require_relative '../lib/input_validator.rb'
+require_relative '../lib/scrap_reader.rb'
+require 'colorize'
+
+def print_methods
+  puts '[1]'.red + ' Search course by name'
+  puts '[2]'.red + ' Search course by price'
+  puts '[3]'.red + ' Search course by name and price'
+  puts '[4]'.red + ' Show all courses'
+  puts '[5]'.red + ' Cancel and close program'
+end
+
+def user_input_number(min, max)
+  option = gets.chomp.to_i
+  valid_input = @validator.validate_input_is_number(option, min, max)
+  until valid_input
+    puts "Please only choose a number between #{min} and #{max}"
+    option = gets.chomp.to_i
+    valid_input = @validator.validate_input_is_number(option, min, max)
+  end
+  option
+end
+
+def print_courses(courses)
+  i = 1
+  courses.each do |course|
+    puts '==========================================================='.magenta
+    puts 'Course number: '.blue + i.to_s
+    puts 'Course name: '.green + course.name.to_s
+    puts 'Course author: '.green + course.author.to_s
+    puts 'Course price: '.green + course.price.to_s
+    puts 'Course original price: '.green + course.previous_price.to_s
+    i += 1
+  end
+end
+
+def search_again
+  puts 'Do you want to search again? [y/n]'
+  input = gets.chomp
+  valid = @validator.validate_yes_no(input)
+  until valid
+    puts 'Please only input yes, no, y or n'.red
+    input = gets.chomp
+    valid = @validator.validate_yes_no(input)
+  end
+  return true if input.downcase == 'y' || input.downcase == 'yes'
+
+  false
+end
+
+@validator = Validate.new
+scrapper = PageReader.new('https://www.udemy.com/')
+repeat = true
+while repeat
+  repeat = false
+  puts 'Welcome to the udemy.org scrapper.'
+  puts 'Select the way in which you want to search for courses: '
+  print_methods
+  method = user_input_number(1, 5)
+  case method
+  when 1
+    puts 'Write a key word to search for a course'
+    key = gets.chomp
+    course_array = scrapper.search_by_name(key)
+    print_courses(course_array)
+    repeat = search_again
+  when 2
+    puts 'Write the minimum price you want to search'
+    min_price = user_input_number(0, 99_999)
+    puts 'Write the maximum price you want to search'
+    max_price = user_input_number(0, 99_999)
+    course_array = scrapper.search_by_price(min_price, max_price)
+    print_courses(course_array)
+    repeat = search_again
+  when 3
+    puts 'Write a key word to search for a course'
+    key = gets.chomp
+    puts 'Write the minimum price you want to search'
+    min_price = user_input_number(0, 99_999)
+    puts 'Write the maximum price you want to search'
+    max_price = user_input_number(0, 99_999)
+    course_array = scrapper.search_by_all_parameters(key, min_price, max_price)
+    print_courses(course_array)
+    repeat = search_again
+  when 4
+    puts 'Showing all courses'
+    course_array = scrapper.search_by_name('')
+    print_courses(course_array)
+    repeat = search_again
+  when 5
+    puts 'Ok, closing'
+  else
+    puts 'You did something wrong, choose an option again'.red
+    repeat = search_again
+  end
+end
